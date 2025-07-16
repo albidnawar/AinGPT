@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AinGPT - Legal Help for Everyone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-bengali {
+            font-family: 'Noto Sans Bengali', sans-serif;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+        }
+        .nav-item-active {
+            color: #2563eb; /* text-blue-600 */
+            background-color: #eff6ff; /* bg-blue-50 */
+        }
+        .dark .nav-item-active {
+            color: #60a5fa; /* text-blue-400 */
+            background-color: #1e293b; /* bg-slate-800 */
+        }
+        .pricing-card-active {
+            border-color: #2563eb; /* border-blue-600 */
+            box-shadow: 0 4px 14px 0 rgb(37 99 235 / 10%);
+        }
+        .dark .pricing-card-active {
+            border-color: #60a5fa; /* border-blue-400 */
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-gray-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
+
+    <div id="app-container" class="flex h-screen overflow-hidden">
+        <!-- Sidebar Navigation -->
+        <aside class="w-16 md:w-64 bg-white dark:bg-gray-950 border-r border-slate-200 dark:border-gray-800 flex flex-col transition-all duration-300">
+            <div class="flex items-center justify-center md:justify-start md:pl-6 h-16 border-b border-slate-200 dark:border-gray-800 shrink-0">
+                <a href="#analyze" class="flex items-center gap-2 nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    <h1 class="text-xl font-bold ml-1 hidden md:block font-bengali">আইনGPT</h1>
+                </a>
+            </div>
+            <nav class="flex-grow p-2 space-y-2">
+                <a href="#analyze" class="nav-item flex items-center p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors duration-200 nav-item-active">
+                    <i data-lucide="file-scan"></i>
+                    <span class="ml-4 font-semibold hidden md:block">Analyze Document</span>
+                </a>
+                <a href="#chat" class="nav-item flex items-center p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors duration-200">
+                    <i data-lucide="message-circle"></i>
+                    <span class="ml-4 font-semibold hidden md:block">Ask AI</span>
+                </a>
+                <a href="#learn" class="nav-item flex items-center p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors duration-200">
+                    <i data-lucide="graduation-cap"></i>
+                    <span class="ml-4 font-semibold hidden md:block">Learn</span>
+                </a>
+                <a href="#scans" class="nav-item flex items-center p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors duration-200">
+                    <i data-lucide="history"></i>
+                    <span class="ml-4 font-semibold hidden md:block">My Scans</span>
+                </a>
+                <a href="#buy-scans" class="nav-item flex items-center p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors duration-200">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="ml-4 font-semibold hidden md:block">Buy Scans</span>
+                </a>
+            </nav>
+            <div class="p-2 border-t border-slate-200 dark:border-gray-800">
+                <div class="flex items-center p-2 rounded-lg">
+                    <img src="https://placehold.co/40x40/E2E8F0/475569?text=A" alt="User Avatar" class="w-10 h-10 rounded-full">
+                    <div class="ml-3 hidden md:block">
+                        <p class="font-semibold text-sm">Abir Ahmed</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">View Profile</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="flex items-center justify-between h-16 px-6 bg-white dark:bg-gray-950 border-b border-slate-200 dark:border-gray-800 shrink-0">
+                <h2 id="page-title" class="text-lg font-semibold">Analyze Document</h2>
+                 <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-gray-800">
+                        <i data-lucide="sun" class="block dark:hidden"></i>
+                        <i data-lucide="moon" class="hidden dark:block"></i>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-gray-800 relative">
+                        <i data-lucide="bell"></i>
+                        <span class="absolute top-1 right-1 block h-2 w-2 rounded-full bg-red-500"></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Scrollable Content -->
+            <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+                
+                <!-- Document Analysis View -->
+                <div id="analyze-view" class="page-content">
+                    <div id="upload-container" class="flex flex-col items-center justify-center">
+                        <div class="w-full max-w-3xl text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm">
+                            <h2 class="text-2xl md:text-3xl font-bold font-bengali">আপনার আইনি ডকুমেন্ট পরীক্ষা করুন</h2>
+                            <p class="text-slate-500 dark:text-slate-400 mt-2 font-bengali">যেকোনো দলিলের ছবি তুলুন বা ফাইল আপলোড করুন, আমরা সহজ ভাষায় বুঝিয়ে দেবো।</p>
+                            
+                            <div id="drop-zone" class="mt-8 border-2 border-dashed border-slate-300 dark:border-gray-600 rounded-xl p-10 cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 bg-slate-50 dark:bg-gray-800/50 transition-colors">
+                                <div class="flex flex-col items-center">
+                                    <i data-lucide="upload-cloud" class="w-16 h-16 text-slate-400 dark:text-gray-500"></i>
+                                    <p class="mt-4 text-lg font-semibold">Drag & drop your document here</p>
+                                    <p class="mt-1 text-slate-500">or</p>
+                                    <button class="mt-2 bg-white dark:bg-gray-700 border border-slate-300 dark:border-gray-600 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-100 dark:hover:bg-gray-600">Browse Files</button>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-sm text-slate-500">You have <span class="font-bold text-blue-600 dark:text-blue-400">3</span> scans remaining.</div>
+
+                            <div id="upload-progress" class="mt-6 w-full hidden">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium text-blue-700 dark:text-white">Analyzing Document...</span>
+                                    <span id="progress-percentage" class="text-sm font-medium text-blue-700 dark:text-white">0%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                                </div>
+                                <p class="text-sm text-slate-500 mt-2">This will use 1 scan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="analysis-result-container" class="hidden max-w-7xl mx-auto mt-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+                                <div class="p-4 border-b border-slate-200 dark:border-gray-700 font-semibold">Original Document</div>
+                                <div class="p-6 overflow-y-auto font-bengali text-sm leading-relaxed h-96">
+                                    <h3 class="font-bold text-lg mb-4">জমির বিক্রয় চুক্তিপত্র</h3>
+                                    <p class="mb-4">প্রথম পক্ষ (বিক্রেতা): মো: আব্দুল করিম, পিতা: মৃত আব্দুল জলিল...</p>
+                                    <p class="mb-4">দ্বিতীয় পক্ষ (ক্রেতা): মিসেস শাহানা বেগম, স্বামী: মো: রফিকুল ইসলাম...</p>
+                                    <p class="mb-4">অত্র চুক্তিপত্রের শর্তাবলী নিম্নরূপ...</p>
+                                </div>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+                                <div class="p-4 border-b border-slate-200 dark:border-gray-700 font-semibold">AI Summary & Insights</div>
+                                <div class="p-6 overflow-y-auto h-96">
+                                    <div class="mb-6">
+                                        <h4 class="font-bold text-base mb-2 font-bengali">সহজ সারসংক্ষেপ</h4>
+                                        <p class="font-bengali text-sm leading-relaxed text-slate-600 dark:text-slate-300">এই চুক্তিপত্রটি আব্দুল করিম (বিক্রেতা) এবং শাহানা বেগম (ক্রেতা) এর মধ্যে একটি জমি বিক্রয়ের চুক্তি...</p>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <h4 class="font-bold text-base font-bengali">গুরুত্বপূর্ণ পর্যবেক্ষণ</h4>
+                                        <div class="bg-red-100/50 dark:bg-red-900/40 border-l-4 border-red-500 p-4 rounded-r-lg">
+                                            <div class="flex items-start">
+                                                <i data-lucide="shield-alert" class="w-5 h-5 text-red-500 mr-3 mt-1 shrink-0"></i>
+                                                <div>
+                                                    <h5 class="font-semibold font-bengali">সম্ভাব্য সমস্যা</h5>
+                                                    <p class="text-sm font-bengali text-red-800 dark:text-red-200 mt-1">জমির তফসিল (মৌজা, খতিয়ান, দাগ নম্বর) উল্লেখ করা হয়নি।</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Chatbot View -->
+                <div id="chat-view" class="page-content hidden">
+                     <div class="flex flex-col h-[85vh] max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div id="chat-messages" class="flex-1 p-6 overflow-y-auto space-y-6">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center shrink-0">
+                                    <i data-lucide="bot" class="text-blue-600"></i>
+                                </div>
+                                <div class="bg-slate-100 dark:bg-gray-700 p-4 rounded-xl rounded-tl-none">
+                                    <p class="font-bengali">নমস্কার! আমি আইনGPT। আপনার আইনি প্রশ্ন করুন, আমি সাহায্য করতে প্রস্তুত।</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-2 flex flex-wrap gap-2">
+                            <button class="suggestion-chip">How to file a police complaint?</button>
+                            <button class="suggestion-chip font-bengali">ভাড়াটিয়া উচ্ছেদ করার নিয়ম কি?</button>
+                        </div>
+                        <div class="p-4 border-t border-slate-200 dark:border-gray-700">
+                            <div class="flex items-center gap-2 bg-slate-100 dark:bg-gray-700 rounded-lg p-2">
+                                <input id="chat-input" type="text" placeholder="Type your legal query..." class="w-full bg-transparent focus:outline-none px-2">
+                                <button class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-gray-600"><i data-lucide="mic"></i></button>
+                                <button id="chat-send-btn" class="p-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"><i data-lucide="send"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learn Portal View -->
+                <div id="learn-view" class="page-content hidden">
+                    <div class="max-w-7xl mx-auto">
+                        <h2 class="text-3xl font-bold mb-6 font-bengali text-center">আইন সম্পর্কে জানুন</h2>
+                        <p class="text-slate-500 dark:text-slate-400 mt-2 mb-8 font-bengali text-center">সাধারণ আইন ও অধিকার সম্পর্কে জানতে নিচের ভিডিওগুলো দেখুন।</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden group">
+                                <div class="relative aspect-video">
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/S_C1QyYJtFk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold font-bengali">ভোক্তা অধিকার আইন, ২০০৯</h4>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">আপনার ভোক্তা অধিকার সম্পর্কে জানুন।</p>
+                                </div>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden group">
+                                <div class="relative aspect-video">
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/zF1g8pAey2I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold font-bengali">জমির দলিল ও খতিয়ান পরিচিতি</h4>
+                                     <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">জমি কেনার আগে যা জানা জরুরি।</p>
+                                </div>
+                            </div>
+                             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden group">
+                                <div class="relative aspect-video">
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/8nAtBf3aO3E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold font-bengali">মামলা করার পদ্ধতি (FIR)</h4>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">থানায় এজাহার বা এফআইআর করবেন যেভাবে।</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Scans View -->
+                <div id="scans-view" class="page-content hidden">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold font-bengali">আমার স্ক্যানসমূহ</h2>
+                            <a href="#buy-scans" class="nav-link bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors">
+                                <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                                Buy More Scans
+                            </a>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 text-center mb-6">
+                            <p class="text-slate-500 dark:text-slate-400 font-bengali">আপনার অবশিষ্ট স্ক্যান</p>
+                            <p class="text-6xl font-bold text-blue-600 dark:text-blue-400 my-2">3</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                            <ul class="divide-y divide-slate-200 dark:divide-gray-700">
+                                <li class="p-4 flex justify-between items-center">
+                                    <div class="flex items-center gap-4">
+                                        <i data-lucide="file-text" class="text-slate-500"></i>
+                                        <div>
+                                            <p class="font-semibold">Bainama_Dalil.pdf</p>
+                                            <p class="text-sm text-slate-500">Scanned on: 15 Jul, 2025</p>
+                                        </div>
+                                    </div>
+                                    <button class="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-gray-700"><i data-lucide="chevron-right"></i></button>
+                                </li>
+                                <li class="p-4 flex justify-between items-center">
+                                    <div class="flex items-center gap-4">
+                                        <i data-lucide="file-text" class="text-slate-500"></i>
+                                        <div>
+                                            <p class="font-semibold">Chukti_Potro.jpg</p>
+                                            <p class="text-sm text-slate-500">Scanned on: 12 Jul, 2025</p>
+                                        </div>
+                                    </div>
+                                    <button class="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-gray-700"><i data-lucide="chevron-right"></i></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buy Scans View -->
+                <div id="buy-scans-view" class="page-content hidden">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h2 class="text-3xl font-bold font-bengali">স্ক্যান কিনুন</h2>
+                        <p class="text-slate-500 dark:text-slate-400 mt-2 font-bengali">আপনার প্রয়োজন অনুযায়ী সেরা প্ল্যানটি বেছে নিন।</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                            <div class="pricing-card border-2 border-slate-200 dark:border-gray-700 rounded-xl p-6 hover:border-blue-500 transition-all cursor-pointer">
+                                <h3 class="font-bold text-lg">Single Scan</h3>
+                                <p class="font-bengali text-4xl font-bold my-4">৳১০০</p>
+                                <ul class="text-slate-500 dark:text-slate-400 space-y-2">
+                                    <li>1 Document Scan</li>
+                                    <li>AI Summary</li>
+                                    <li>Fraud Detection</li>
+                                </ul>
+                                <button class="w-full mt-6 bg-slate-200 dark:bg-gray-700 font-semibold py-2 px-4 rounded-lg">Select Plan</button>
+                            </div>
+                            <div class="pricing-card border-2 rounded-xl p-6 transition-all cursor-pointer pricing-card-active relative">
+                                <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
+                                    <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Popular</span>
+                                </div>
+                                <h3 class="font-bold text-lg">Value Pack</h3>
+                                <p class="font-bengali text-4xl font-bold my-4">৳৪৫০</p>
+                                 <ul class="text-slate-500 dark:text-slate-400 space-y-2">
+                                    <li>5 Document Scans</li>
+                                    <li>AI Summary</li>
+                                    <li>Fraud Detection</li>
+                                </ul>
+                                <button class="w-full mt-6 bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg">Select Plan</button>
+                            </div>
+                            <div class="pricing-card border-2 border-slate-200 dark:border-gray-700 rounded-xl p-6 hover:border-blue-500 transition-all cursor-pointer">
+                                <h3 class="font-bold text-lg">Bulk Pack</h3>
+                                <p class="font-bengali text-4xl font-bold my-4">৳৮০০</p>
+                                 <ul class="text-slate-500 dark:text-slate-400 space-y-2">
+                                    <li>10 Document Scans</li>
+                                    <li>AI Summary</li>
+                                    <li>Fraud Detection</li>
+                                </ul>
+                                 <button class="w-full mt-6 bg-slate-200 dark:bg-gray-700 font-semibold py-2 px-4 rounded-lg">Select Plan</button>
+                            </div>
+                        </div>
+
+                        <div id="checkout-form" class="mt-12 text-left max-w-lg mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm">
+                            <h3 class="text-xl font-bold mb-6">Payment Details</h3>
+                            <div class="space-y-4">
+                                 <div>
+                                    <label for="name" class="font-medium text-sm">Full Name</label>
+                                    <input type="text" id="name" class="w-full mt-1 bg-slate-100 dark:bg-gray-700 border-transparent rounded-md p-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                 <div>
+                                    <label for="card" class="font-medium text-sm">Card Details</label>
+                                    <input type="text" id="card" placeholder="0000 0000 0000 0000" class="w-full mt-1 bg-slate-100 dark:bg-gray-700 border-transparent rounded-md p-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors">Pay ৳450</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const navItems = document.querySelectorAll('.nav-item');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageContents = document.querySelectorAll('.page-content');
+            const pageTitle = document.getElementById('page-title');
+            
+            // --- THEME TOGGLE ---
+            const applyTheme = (theme) => {
+                document.documentElement.classList.toggle('dark', theme === 'dark');
+            };
+            themeToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            // --- NAVIGATION ---
+            const switchView = (hash) => {
+                const targetId = hash.substring(1) + '-view';
+                
+                navItems.forEach(item => {
+                    const isActive = item.getAttribute('href') === hash;
+                    item.classList.toggle('nav-item-active', isActive);
+                    if (isActive && pageTitle) {
+                        pageTitle.textContent = item.querySelector('span').textContent;
+                    }
+                });
+
+                pageContents.forEach(content => {
+                    content.classList.toggle('hidden', content.id !== targetId);
+                });
+                window.scrollTo(0, 0);
+            };
+
+            const handleNavClick = (e) => {
+                e.preventDefault();
+                const hash = e.currentTarget.getAttribute('href');
+                window.location.hash = hash;
+            };
+
+            navItems.forEach(item => item.addEventListener('click', handleNavClick));
+            navLinks.forEach(link => link.addEventListener('click', handleNavClick));
+
+            window.addEventListener('hashchange', () => {
+                const hash = window.location.hash || '#analyze';
+                switchView(hash);
+            });
+
+            // Initial view
+            switchView(window.location.hash || '#analyze');
+
+            // --- DOCUMENT ANALYSIS SIMULATION ---
+            const dropZone = document.getElementById('drop-zone');
+            const uploadContainer = document.getElementById('upload-container');
+            const uploadProgress = document.getElementById('upload-progress');
+            const analysisResultContainer = document.getElementById('analysis-result-container');
+
+            const startUploadSimulation = () => {
+                const mainUploadBox = document.querySelector('#upload-container > div');
+                if (mainUploadBox) {
+                    mainUploadBox.querySelector('#drop-zone').classList.add('hidden');
+                    mainUploadBox.querySelector('.text-sm').classList.add('hidden');
+                    mainUploadBox.querySelector('#upload-progress').classList.remove('hidden');
+                }
+
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.floor(Math.random() * 15) + 5;
+                    if (progress > 100) {
+                        progress = 100;
+                    }
+                    
+                    const progressBar = document.getElementById('progress-bar');
+                    const progressText = document.getElementById('progress-percentage');
+                    if (progressBar) progressBar.style.width = progress + '%';
+                    if (progressText) progressText.textContent = progress + '%';
+
+                    if (progress === 100) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            if (uploadContainer) uploadContainer.classList.add('hidden');
+                            if (analysisResultContainer) analysisResultContainer.classList.remove('hidden');
+                            lucide.createIcons();
+                        }, 500);
+                    }
+                }, 200);
+            };
+
+            if (dropZone) {
+                dropZone.addEventListener('click', startUploadSimulation);
+                dropZone.addEventListener('dragover', (e) => e.preventDefault());
+                dropZone.addEventListener('dragleave', (e) => e.preventDefault());
+                dropZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    startUploadSimulation();
+                });
+            }
+
+            // --- CHATBOT SIMULATION ---
+            const chatInput = document.getElementById('chat-input');
+            const chatSendBtn = document.getElementById('chat-send-btn');
+            const chatMessages = document.getElementById('chat-messages');
+            const suggestionChips = document.querySelectorAll('.suggestion-chip');
+
+            const addChatMessage = (message, isUser = false, isBengali = false) => {
+                if (!chatMessages) return;
+                const messageWrapper = document.createElement('div');
+                messageWrapper.className = `flex items-start gap-3 ${isUser ? 'justify-end' : ''}`;
+                const fontClass = isBengali ? 'font-bengali' : '';
+                
+                let messageContent = isUser ? `
+                    <div class="bg-blue-600 text-white p-4 rounded-xl rounded-tr-none max-w-md"><p class="${fontClass}">${message}</p></div>
+                    <img src="https://placehold.co/40x40/E2E8F0/475569?text=A" alt="User" class="w-10 h-10 rounded-full shrink-0">
+                ` : `
+                    <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center shrink-0"><i data-lucide="bot" class="text-blue-600"></i></div>
+                    <div class="bg-slate-100 dark:bg-gray-700 p-4 rounded-xl rounded-tl-none max-w-md"><p class="${fontClass}">${message}</p></div>
+                `;
+                
+                messageWrapper.innerHTML = messageContent;
+                chatMessages.appendChild(messageWrapper);
+                lucide.createIcons();
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            };
+
+            const handleChatSend = () => {
+                const query = chatInput.value.trim();
+                if (!query) return;
+                const isBengaliQuery = /[^\u0000-\u007F]/.test(query);
+                addChatMessage(query, true, isBengaliQuery);
+                chatInput.value = '';
+
+                setTimeout(() => {
+                    let response = "I'm sorry, I can only provide simulated responses.";
+                    let isBengaliResponse = false;
+                    if (isBengaliQuery) {
+                        response = "দুঃখিত, আমি শুধুমাত্র সিমুলেটেড উত্তর দিতে পারি।";
+                        isBengaliResponse = true;
+                    }
+                    addChatMessage(response, false, isBengaliResponse);
+                }, 1000);
+            };
+
+            if(chatSendBtn) chatSendBtn.addEventListener('click', handleChatSend);
+            if(chatInput) chatInput.addEventListener('keypress', (e) => e.key === 'Enter' && handleChatSend());
+            suggestionChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    chatInput.value = chip.textContent;
+                    handleChatSend();
+                });
+            });
+
+            // --- PRICING PLAN SELECTION ---
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            const paymentButton = document.querySelector('#checkout-form button');
+
+            pricingCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    pricingCards.forEach(c => c.classList.remove('pricing-card-active'));
+                    card.classList.add('pricing-card-active');
+                    const price = card.querySelector('p').textContent;
+                    if(paymentButton) paymentButton.textContent = `Pay ${price}`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
