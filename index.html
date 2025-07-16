@@ -55,7 +55,7 @@
         <aside class="w-16 md:w-64 bg-white dark:bg-gray-950 border-r border-slate-200 dark:border-gray-800 flex flex-col transition-all duration-300">
             <div class="flex items-center justify-center md:justify-start md:pl-6 h-16 border-b border-slate-200 dark:border-gray-800 shrink-0">
                 <a href="#analyze" class="flex items-center gap-2 nav-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
                     <h1 class="text-xl font-bold ml-1 hidden md:block font-bengali">আইনGPT</h1>
                 </a>
             </div>
@@ -84,10 +84,10 @@
             <div class="p-2 border-t border-slate-200 dark:border-gray-800">
                 <div class="flex items-center p-2 rounded-lg">
                     <img src="https://placehold.co/40x40/E2E8F0/475569?text=A" alt="User Avatar" class="w-10 h-10 rounded-full">
-                    <div class="ml-3 hidden md:block">
-                        <p class="font-semibold text-sm">Abir Ahmed</p>
+                        <div class="ml-3 hidden md:block">
+                        <p class="font-semibold text-sm">Albid Nawar</p>
                         <p class="text-xs text-slate-500 dark:text-slate-400">View Profile</p>
-                    </div>
+                        </div>
                 </div>
             </div>
         </aside>
@@ -97,7 +97,7 @@
             <!-- Header -->
             <header class="flex items-center justify-between h-16 px-6 bg-white dark:bg-gray-950 border-b border-slate-200 dark:border-gray-800 shrink-0">
                 <h2 id="page-title" class="text-lg font-semibold">Analyze Document</h2>
-                 <div class="flex items-center gap-4">
+                <div class="flex items-center gap-4">
                     <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-gray-800">
                         <i data-lucide="sun" class="block dark:hidden"></i>
                         <i data-lucide="moon" class="hidden dark:block"></i>
@@ -111,7 +111,7 @@
 
             <!-- Scrollable Content -->
             <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
-                
+
                 <!-- Document Analysis View -->
                 <div id="analyze-view" class="page-content">
                     <div id="upload-container" class="flex flex-col items-center justify-center">
@@ -147,31 +147,31 @@
                             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
                                 <div class="p-4 border-b border-slate-200 dark:border-gray-700 font-semibold">Original Document</div>
                                 <div class="p-6 overflow-y-auto font-bengali text-sm leading-relaxed h-96">
-                                    <h3 class="font-bold text-lg mb-4">জমির বিক্রয় চুক্তিপত্র</h3>
+                                <h3 class="font-bold text-lg mb-4">জমির বিক্রয় চুক্তিপত্র</h3>
                                     <p class="mb-4">প্রথম পক্ষ (বিক্রেতা): মো: আব্দুল করিম, পিতা: মৃত আব্দুল জলিল...</p>
                                     <p class="mb-4">দ্বিতীয় পক্ষ (ক্রেতা): মিসেস শাহানা বেগম, স্বামী: মো: রফিকুল ইসলাম...</p>
                                     <p class="mb-4">অত্র চুক্তিপত্রের শর্তাবলী নিম্নরূপ...</p>
-                                </div>
                             </div>
+                        </div>
                             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
-                                <div class="p-4 border-b border-slate-200 dark:border-gray-700 font-semibold">AI Summary & Insights</div>
+                            <div class="p-4 border-b border-slate-200 dark:border-gray-700 font-semibold">AI Summary & Insights</div>
                                 <div class="p-6 overflow-y-auto h-96">
-                                    <div class="mb-6">
-                                        <h4 class="font-bold text-base mb-2 font-bengali">সহজ সারসংক্ষেপ</h4>
+                                <div class="mb-6">
+                                    <h4 class="font-bold text-base mb-2 font-bengali">সহজ সারসংক্ষেপ</h4>
                                         <p class="font-bengali text-sm leading-relaxed text-slate-600 dark:text-slate-300">এই চুক্তিপত্রটি আব্দুল করিম (বিক্রেতা) এবং শাহানা বেগম (ক্রেতা) এর মধ্যে একটি জমি বিক্রয়ের চুক্তি...</p>
-                                    </div>
-                                    <div class="space-y-4">
-                                        <h4 class="font-bold text-base font-bengali">গুরুত্বপূর্ণ পর্যবেক্ষণ</h4>
-                                        <div class="bg-red-100/50 dark:bg-red-900/40 border-l-4 border-red-500 p-4 rounded-r-lg">
-                                            <div class="flex items-start">
-                                                <i data-lucide="shield-alert" class="w-5 h-5 text-red-500 mr-3 mt-1 shrink-0"></i>
-                                                <div>
+                                </div>
+                                <div class="space-y-4">
+                                    <h4 class="font-bold text-base font-bengali">গুরুত্বপূর্ণ পর্যবেক্ষণ</h4>
+                                    <div class="bg-red-100/50 dark:bg-red-900/40 border-l-4 border-red-500 p-4 rounded-r-lg">
+                                        <div class="flex items-start">
+                                            <i data-lucide="shield-alert" class="w-5 h-5 text-red-500 mr-3 mt-1 shrink-0"></i>
+                                            <div>
                                                     <h5 class="font-semibold font-bengali">সম্ভাব্য সমস্যা</h5>
                                                     <p class="text-sm font-bengali text-red-800 dark:text-red-200 mt-1">জমির তফসিল (মৌজা, খতিয়ান, দাগ নম্বর) উল্লেখ করা হয়নি।</p>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
                                     <i data-lucide="bot" class="text-blue-600"></i>
                                 </div>
                                 <div class="bg-slate-100 dark:bg-gray-700 p-4 rounded-xl rounded-tl-none">
-                                    <p class="font-bengali">নমস্কার! আমি আইনGPT। আপনার আইনি প্রশ্ন করুন, আমি সাহায্য করতে প্রস্তুত।</p>
+                                    <p class="font-bengali">স্বাগতম! আমি আইনGPT। আপনার আইনি প্রশ্ন করুন, আমি সাহায্য করতে প্রস্তুত।</p>
                                 </div>
                             </div>
                         </div>
@@ -211,11 +211,11 @@
                         <h2 class="text-3xl font-bold mb-6 font-bengali text-center">আইন সম্পর্কে জানুন</h2>
                         <p class="text-slate-500 dark:text-slate-400 mt-2 mb-8 font-bengali text-center">সাধারণ আইন ও অধিকার সম্পর্কে জানতে নিচের ভিডিওগুলো দেখুন।</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden group">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden group">
                                 <div class="relative aspect-video">
                                     <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/S_C1QyYJtFk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                </div>
-                                <div class="p-4">
+                            </div>
+                            <div class="p-4">
                                     <h4 class="font-semibold font-bengali">ভোক্তা অধিকার আইন, ২০০৯</h4>
                                     <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">আপনার ভোক্তা অধিকার সম্পর্কে জানুন।</p>
                                 </div>
@@ -227,20 +227,20 @@
                                 <div class="p-4">
                                     <h4 class="font-semibold font-bengali">জমির দলিল ও খতিয়ান পরিচিতি</h4>
                                      <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">জমি কেনার আগে যা জানা জরুরি।</p>
-                                </div>
                             </div>
-                             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden group">
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden group">
                                 <div class="relative aspect-video">
                                     <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/8nAtBf3aO3E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                </div>
-                                <div class="p-4">
+                            </div>
+                            <div class="p-4">
                                     <h4 class="font-semibold font-bengali">মামলা করার পদ্ধতি (FIR)</h4>
                                     <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">থানায় এজাহার বা এফআইআর করবেন যেভাবে।</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                                </div>
+                            </div>
 
                 <!-- My Scans View -->
                 <div id="scans-view" class="page-content hidden">
@@ -264,7 +264,7 @@
                                         <div>
                                             <p class="font-semibold">Bainama_Dalil.pdf</p>
                                             <p class="text-sm text-slate-500">Scanned on: 15 Jul, 2025</p>
-                                        </div>
+                                </div>
                                     </div>
                                     <button class="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-gray-700"><i data-lucide="chevron-right"></i></button>
                                 </li>
@@ -274,8 +274,8 @@
                                         <div>
                                             <p class="font-semibold">Chukti_Potro.jpg</p>
                                             <p class="text-sm text-slate-500">Scanned on: 12 Jul, 2025</p>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
                                     <button class="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-gray-700"><i data-lucide="chevron-right"></i></button>
                                 </li>
                             </ul>
@@ -312,7 +312,7 @@
                                     <li>Fraud Detection</li>
                                 </ul>
                                 <button class="w-full mt-6 bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg">Select Plan</button>
-                            </div>
+                                </div>
                             <div class="pricing-card border-2 border-slate-200 dark:border-gray-700 rounded-xl p-6 hover:border-blue-500 transition-all cursor-pointer">
                                 <h3 class="font-bold text-lg">Bulk Pack</h3>
                                 <p class="font-bengali text-4xl font-bold my-4">৳৮০০</p>
@@ -322,8 +322,8 @@
                                     <li>Fraud Detection</li>
                                 </ul>
                                  <button class="w-full mt-6 bg-slate-200 dark:bg-gray-700 font-semibold py-2 px-4 rounded-lg">Select Plan</button>
+                                </div>
                             </div>
-                        </div>
 
                         <div id="checkout-form" class="mt-12 text-left max-w-lg mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm">
                             <h3 class="text-xl font-bold mb-6">Payment Details</h3>
@@ -331,18 +331,18 @@
                                  <div>
                                     <label for="name" class="font-medium text-sm">Full Name</label>
                                     <input type="text" id="name" class="w-full mt-1 bg-slate-100 dark:bg-gray-700 border-transparent rounded-md p-2 focus:ring-blue-500 focus:border-blue-500">
-                                </div>
+                        </div>
                                  <div>
                                     <label for="card" class="font-medium text-sm">Card Details</label>
                                     <input type="text" id="card" placeholder="0000 0000 0000 0000" class="w-full mt-1 bg-slate-100 dark:bg-gray-700 border-transparent rounded-md p-2 focus:ring-blue-500 focus:border-blue-500">
-                                </div>
+                        </div>
                                 <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors">Pay ৳450</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </main>
+        </main>
         </div>
     </div>
 
@@ -355,7 +355,7 @@
             const navLinks = document.querySelectorAll('.nav-link');
             const pageContents = document.querySelectorAll('.page-content');
             const pageTitle = document.getElementById('page-title');
-            
+
             // --- THEME TOGGLE ---
             const applyTheme = (theme) => {
                 document.documentElement.classList.toggle('dark', theme === 'dark');
@@ -385,9 +385,9 @@
             };
 
             const handleNavClick = (e) => {
-                e.preventDefault();
-                const hash = e.currentTarget.getAttribute('href');
-                window.location.hash = hash;
+                    e.preventDefault();
+                    const hash = e.currentTarget.getAttribute('href');
+                    window.location.hash = hash;
             };
 
             navItems.forEach(item => item.addEventListener('click', handleNavClick));
@@ -439,12 +439,12 @@
             };
 
             if (dropZone) {
-                dropZone.addEventListener('click', startUploadSimulation);
+            dropZone.addEventListener('click', startUploadSimulation);
                 dropZone.addEventListener('dragover', (e) => e.preventDefault());
                 dropZone.addEventListener('dragleave', (e) => e.preventDefault());
-                dropZone.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    startUploadSimulation();
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                startUploadSimulation();
                 });
             }
 
